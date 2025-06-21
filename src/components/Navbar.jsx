@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, ShoppingCart } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,16 +21,16 @@ export default function Navbar() {
         <div className="flex items-center flex-1">
           <Link
             href="/"
-            className="text-xl md:text-2xl font-bold tracking-wide hover:text-gray-300 transition duration-200"
+            className="hover:scale-110 transition duration-200"
           >
-            audiophile
+            <Image src="/icons/logo.svg" alt="logo" width={150} height={32} />
           </Link>
         </div>
 
         {/* Center: Desktop Nav */}
         <ul className="hidden md:flex flex-1 items-center justify-center space-x-10">
           {navLinks.map((link) => (
-            <li key={link.name}>
+            <li key={link.name} className="hover:scale-110  transition duration-200">
               <Link
                 href={link.href}
                 className="uppercase tracking-wider hover:text-gray-300 transition duration-200"
@@ -43,7 +44,7 @@ export default function Navbar() {
         <div className="flex items-center justify-end flex-1">
           <Link
             href="/cart"
-            className="hidden md:block hover:text-gray-300 transition duration-200"
+            className="hidden md:block hover:text-gray-400 transition duration-200"
           >
             <ShoppingCart />
           </Link>
