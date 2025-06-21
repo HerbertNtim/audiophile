@@ -42,7 +42,9 @@ export default function Home() {
       </div>
 
       {/* CATEGORIES */}
-      <Category />
+      <div className="bg-gray-200 pt-45 pb-25">
+        <Category />
+      </div>
     </div>
   );
 }
