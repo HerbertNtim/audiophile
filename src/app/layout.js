@@ -16,10 +16,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" webcrx="">
       <body
-        className={`${roboto.className} antialiased`}
+        className={`${roboto.className} antialiased h-full`}
       >
-        <Navbar />
-        {children}
+        <main className="flex flex-col min-h-full">
+          <Navbar />
+          <div className="flex-1">
+            {children}
+          </div>
+          <p>Footer</p>
+        </main>
       </body>
     </html>
   );
