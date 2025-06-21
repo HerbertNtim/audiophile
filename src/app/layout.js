@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Roboto } from "next/font/google";
 
@@ -15,9 +16,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" webcrx="">
       <body
-        className={`${roboto.className} antialiased`}
+        className={`${roboto.className} antialiased h-full`}
       >
-        {children}
+        <main className="flex flex-col min-h-full">
+          <Navbar />
+          <div className="flex-1">
+            {children}
+          </div>
+          <p>Footer</p>
+        </main>
       </body>
     </html>
   );
