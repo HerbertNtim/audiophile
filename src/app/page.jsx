@@ -28,13 +28,13 @@ export default function Home() {
             <h1 className="text-4xl sm:text-7xl md:text-6xl 2xl:text-9xl font-bold uppercase leading-tight">
               XX99 Mark II <br /> Headphones
             </h1>
-            <p className="text-sm sm:text-lg  text-gray-400 my-4 sm:my-8 md:mb-12">
+            <p className="text-sm sm:text-lg  text-gray-400 my-4 sm:my-8 mb-12">
               Experience natural, lifelike audio and exceptional <br /> build
               quality made for the passionate music <br /> enthusiast.
             </p>
             <Link
               href={"/headphones"}
-              className="mt-4 sm:mt-8 bg-orange-500 text-white  sm:px-8 sm:py-4 px-6 py-3 rounded hover:bg-orange-700 transition cursor-pointer uppercase font-semibold tracking-wider"
+              className="sm:mt-8 bg-orange-500 text-white sm:px-8 sm:py-4 px-6 py-3 rounded hover:bg-orange-700 transition cursor-pointer uppercase font-semibold tracking-wider"
             >
               See Product
             </Link>
