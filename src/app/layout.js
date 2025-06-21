@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Roboto } from "next/font/google";
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${roboto.className} antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>
