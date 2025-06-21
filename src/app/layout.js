@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${roboto.className} antialiased h-full`}
       >
-        <main className="flex flex-col min-h-full">
+        <main className="flex flex-col">
           <Navbar />
           <div className="flex-1">
             {children}
