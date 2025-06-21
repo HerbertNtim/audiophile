@@ -18,15 +18,15 @@ export default function Home() {
 
       {/* Text content */}
       <div className="relative z-20 flex items-center justify-center md:justify-start h-full px-6 md:px-16">
-        <div className="w-full md:text-left pt-40 sm:pt-64 md:pt-72">
+        <div className="w-full md:text-left pt-40 2xl:pt-84">
           <h4 className="text-sm md:text-lg font-light text-gray-500 tracking-[0.9em] mb-4">NEW PRODUCT</h4>
-          <h1 className="text-4xl sm:text-7xl md:text-8xl font-bold uppercase leading-tight">
+          <h1 className="text-4xl sm:text-7xl md:text-6xl 2xl:text-9xl font-bold uppercase leading-tight">
             XX99 Mark II <br /> Headphones
           </h1>
-          <p className="text-sm sm:text-lg md:text-2xl text-gray-400 my-4 sm:my-8 md:mb-12">
+          <p className="text-sm sm:text-lg  text-gray-400 my-4 sm:my-8 md:mb-12">
             Experience natural, lifelike audio and exceptional <br /> build quality made for the passionate music <br /> enthusiast.
           </p>
-          <Link href={'/headphones'} className="mt-4 sm:mt-8 bg-orange-500 text-white md:text-2xl sm:px-8 sm:py-4 px-6 py-3 md:px-10 md:py-6 rounded hover:bg-orange-700 transition cursor-pointer uppercase font-semibold tracking-wider">
+          <Link href={'/headphones'} className="mt-4 sm:mt-8 bg-orange-500 text-white  sm:px-8 sm:py-4 px-6 py-3 rounded hover:bg-orange-700 transition cursor-pointer uppercase font-semibold tracking-wider">
             See Product
           </Link>
         </div>
