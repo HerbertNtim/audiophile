@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Roboto } from "next/font/google";
-import Footer from "@/components/Footer";
+import StateWrapper from "./StateWrapper";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -18,10 +18,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" webcrx="">
-      <body className={`${roboto.className} antialiased`}>
+    <html lang="en">
+      <body className={roboto.className}>
+        <StateWrapper>
           <Navbar />
-          <main className="pt-16 md:pt-20">{children}</main>
+          {children}
+        </StateWrapper>
       </body>
     </html>
   );
