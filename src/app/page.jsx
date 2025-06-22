@@ -1,4 +1,5 @@
 import Category from "@/components/Category";
+import EarphoneCard from "@/components/EarphoneCard";
 import SpeakerCard from "@/components/SpeakerCard";
 import SpeakerOnTable from "@/components/SpeakerOnTable";
 import Image from "next/image";
@@ -48,6 +49,7 @@ export default function Home() {
         <Category />
         <SpeakerCard />
         <SpeakerOnTable />
+        <EarphoneCard />
       </div>
     </div>
   );
