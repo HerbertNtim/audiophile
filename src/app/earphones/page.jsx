@@ -8,8 +8,6 @@ import { addToCart } from "@/store/cart";
 import { useDispatch, useSelector } from "react-redux";
 
 const Earphones = () => {
-  const cart = useSelector((state) => state.cart.items);
-  console.log("Cart items:", cart);
   const dispatch = useDispatch();
   const handleAddToCart = (earphone) => {
     dispatch(addToCart({
@@ -22,7 +20,7 @@ const Earphones = () => {
 
   return (
     <div className="w-full h-full">
-      <div className="relative min-h-[250px] md:min-h-[350px] lg:h-[450px] w-full overflow-hidden">
+      <div className="relative min-h-[350px] md:min-h-[450px] lg:h-[550px] w-full overflow-hidden">
         {/* Background image */}
         <Image
           src="/images/image-earphones-yx1.jpg"
@@ -35,7 +33,7 @@ const Earphones = () => {
         <div className="absolute inset-0 bg-black/60 z-10" />
 
         {/* Text content */}
-        <div className="relative z-20 flex items-center justify-center md:justify-start h-full px-6 md:px-16 pb-20">
+        <div className="relative z-20 flex items-center justify-center md:justify-start h-full px-6 md:px-16 pb-2">
           <div className="w-full md:text-left pt-20 2xl:pt-84">
             <h4 className="text-sm md:text-lg font-light text-gray-500 tracking-[0.9em] mb-2">
               EARPHONES

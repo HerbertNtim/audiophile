@@ -1,28 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+
+const navLinks = [
+  { name: "Headphones", href: "/headphones" },
+  { name: "Speakers", href: "/speakers" },
+  { name: "Earphones", href: "/earphones" },
+];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const navLinks = [
-    { name: "Headphones", href: "/headphones" },
-    { name: "Speakers", href: "/speakers" },
-    { name: "Earphones", href: "/earphones" },
-  ];
+  const [cartItems, setCartItems] = useState(0);
+  const carts = useSelector((state) => state.cart.items);
+  useEffect(() => {
+    // Update cart items count whenever the cart changes
+    setCartItems(carts.length);
+  }, [carts]);
 
   return (
     <nav className="w-full bg-black text-white md:border-b border-white fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center justify-between">
         {/* Left: Logo */}
         <div className="flex items-center flex-1">
-          <Link
-            href="/"
-            className="hover:scale-110 transition duration-200"
-          >
+          <Link href="/" className="hover:scale-110 transition duration-200">
             <Image src="/icons/logo.svg" alt="logo" width={150} height={32} />
           </Link>
         </div>
@@ -30,7 +34,10 @@ export default function Navbar() {
         {/* Center: Desktop Nav */}
         <ul className="hidden md:flex flex-1 items-center justify-center space-x-10">
           {navLinks.map((link) => (
-            <li key={link.name} className="hover:scale-110  transition duration-200">
+            <li
+              key={link.name}
+              className="hover:scale-110  transition duration-200"
+            >
               <Link
                 href={link.href}
                 className="uppercase tracking-wider hover:text-gray-300 transition duration-200"
@@ -41,13 +48,18 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center justify-end flex-1">
-          <Link
-            href="/cart"
-            className="hidden md:block hover:text-gray-400 transition duration-200"
-          >
-            <ShoppingCart />
-          </Link>
+        <div className="flex items-center justify-end flex-1 mr-6">
+          <div className="relative hidden md:block cursor-pointer">
+            <Link
+              href="/cart"
+              className="hover:text-gray-400 transition duration-200"
+            >
+              <ShoppingCart size={30} />
+            </Link>
+            <span className="absolute -top-2 -right-2 text-xs bg-amber-500 text-white px-2 py-1 rounded-full leading-none">
+              {cartItems}
+            </span>
+          </div>
 
           {/* Mobile menu toggle */}
           <button

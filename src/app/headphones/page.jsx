@@ -1,9 +1,21 @@
 import { headphones } from "@/constants";
+import { addToCart } from "@/store/cart";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const Headphones = () => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (headphone) => {
+    dispatch(addToCart({
+      id: headphone.id,
+      name: headphone.name,
+      image: headphone.image,
+      price: headphone.price,
+    }))
+  }
+
   return (
     <div className="w-full h-full">
       <div className="relative min-h-[600px] md:min-h-[700px] lg:min-h-screen w-full">
@@ -60,7 +72,7 @@ const Headphones = () => {
               <h3 className="text-lg font-semibold text-black">{headphone.name}</h3>
               <div className="flex items-center justify-between mt-2">
                 <p className="text-gray-500 text-xl">${headphone.price}</p>
-                <button className="bg-orange-500 px-2 py-1 rounded hover:bg-orange-700 transition cursor-pointer">
+                <button className="bg-orange-500 px-2 py-1 rounded hover:bg-orange-700 transition cursor-pointer" onClick={() => handleAddToCart(headphone)}>
                   <Image src={'/icons/icon-cart.svg'} alt="cart" width={25} height={25} className="object-cover" />
                 </button>
               </div>
