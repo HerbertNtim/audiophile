@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, ShoppingCart } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,16 +21,16 @@ export default function Navbar() {
         <div className="flex items-center flex-1">
           <Link
             href="/"
-            className="text-xl md:text-2xl font-bold tracking-wide hover:text-gray-300 transition duration-200"
+            className="hover:scale-110 transition duration-200"
           >
-            audiophile
+            <Image src="/icons/logo.svg" alt="logo" width={150} height={32} />
           </Link>
         </div>
 
         {/* Center: Desktop Nav */}
         <ul className="hidden md:flex flex-1 items-center justify-center space-x-10">
           {navLinks.map((link) => (
-            <li key={link.name}>
+            <li key={link.name} className="hover:scale-110  transition duration-200">
               <Link
                 href={link.href}
                 className="uppercase tracking-wider hover:text-gray-300 transition duration-200"
@@ -40,12 +41,10 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Right: Cart or Menu */}
-        <div className="flex items-center justify-end mr-8 flex-1">
-          {/* Cart icon (desktop) */}
+        <div className="flex items-center justify-end flex-1">
           <Link
             href="/cart"
-            className="hidden md:block hover:text-gray-300 transition duration-200"
+            className="hidden md:block hover:text-gray-400 transition duration-200"
           >
             <ShoppingCart />
           </Link>
@@ -60,35 +59,33 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden bg-black px-6 pt-4 pb-6 border-t border-white transform transition-transform duration-300 ease-in-out ${
-          mobileOpen ? "translate-y-0 opacity-100" : "-translate-y-5 opacity-0 pointer-events-none"
-        }`}
-      >
-        <ul className="space-y-4 text-right">
-          {navLinks.map((link) => (
-            <li key={link.name}>
+      {/* Mobile Menu - Only render when open */}
+      {mobileOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-black border-t border-white z-40">
+          <ul className="space-y-4 text-right px-4 py-6">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <Link
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block uppercase tracking-wider hover:text-gray-300 transition duration-200"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+            <li>
               <Link
-                href={link.href}
+                href="/cart"
                 onClick={() => setMobileOpen(false)}
-                className="block uppercase tracking-wider hover:text-gray-300 transition duration-200"
+                className="inline-block mt-2 hover:text-gray-300 transition duration-200"
               >
-                {link.name}
+                <ShoppingCart />
               </Link>
             </li>
-          ))}
-          <li>
-            <Link
-              href="/cart"
-              onClick={() => setMobileOpen(false)}
-              className="inline-block mt-2 hover:text-gray-300 transition duration-200"
-            >
-              <ShoppingCart />
-            </Link>
-          </li>
-        </ul>
-      </div>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }
