@@ -1,5 +1,6 @@
 import Category from "@/components/Category";
 import EarphoneCard from "@/components/EarphoneCard";
+import HumanPlay from "@/components/HumanPlay";
 import SpeakerCard from "@/components/SpeakerCard";
 import SpeakerOnTable from "@/components/SpeakerOnTable";
 import Image from "next/image";
@@ -45,11 +46,12 @@ export default function Home() {
       </div>
 
       {/* CATEGORIES */}
-      <div className="bg-gray-200 pt-45 pb-25 flex flex-col items-center">
+      <div className="bg-gray-200 pt-45 pb-15 flex flex-col items-center">
         <Category />
         <SpeakerCard />
         <SpeakerOnTable />
         <EarphoneCard />
+        <HumanPlay />
       </div>
     </div>
   );
