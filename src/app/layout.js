@@ -20,10 +20,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" webcrx="">
       <body className={`${roboto.className} antialiased`}>
-        <div className="min-h-screen flex flex-col">
           <Navbar />
-          <main className="flex-1 pt-16 md:pt-20">{children}</main>
-        </div>
+          <main className="pt-16 md:pt-20">{children}</main>
       </body>
     </html>
   );

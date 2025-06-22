@@ -79,7 +79,7 @@ export const headphones = [
   },
 ]
 
-const speakers = [
+export const speakers = [
   {
     id: '1',
     name: 'Sonos One',
@@ -124,7 +124,7 @@ const speakers = [
   },
 ]
 
-const earphones = [
+export const earphones = [
   {
     id: '1',
     name: 'Apple AirPods Pro',
@@ -148,11 +148,5 @@ const earphones = [
     name: 'Jabra Elite 75t',
     price: 199.99,
     image: '/images/earphones/image-gallery-3.jpg',
-  },
-  {
-    id: '5',
-    name: 'Samsung Galaxy Buds Pro',
-    price: 199.99,
-    image: '/images/earphones/image-product.jpg',
   },
 ]
