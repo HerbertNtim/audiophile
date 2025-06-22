@@ -4,15 +4,15 @@ import React from "react";
 
 const EarphoneCard = () => {
   return (
-    <div className="min-h-[300px] md:min-h-[400px] lg:min-h-[450px] w-full rounded-2xl overflow-hidden">
-      <div className="flex flex-col md:flex-row w-full h-full gap-0 py-32">
+    <div className="min-h-[200px] md:min-h-[400px] lg:min-h-[450px] w-full rounded-2xl overflow-hidden">
+      <div className="flex flex-col md:flex-row w-full h-full gap-0 ">
         {/* EARPHONE IMAGE */}
-        <div className="w-[90%] h-48 px-16">
+        <div className="w-[98%] h-48 px-16">
           <Image
             src="/images/image-earphones-yx1.jpg"
             alt="YX1 Earphones"
-            width={450}
-            height={450}
+            width={500}
+            height={500}
             className="object-cover rounded-2xl"
           />
         </div>

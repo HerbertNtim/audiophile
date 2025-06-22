@@ -5,7 +5,7 @@ import React from "react";
 const HumanPlay = () => {
   return (
     <div className="min-h-[300px] md:min-h-[400px] lg:min-h-[450px] w-full rounded-2xl overflow-hidden">
-      <div className="flex flex-col md:flex-row w-full h-full gap-0 py-30">
+      <div className="flex flex-col md:flex-row w-full h-full gap-0 py-32">
         {/* TEXT CONTENT */}
         <div className="w-[80%] h-90 sm:w-[90%] flex items-center justify-center mx-6 sm:mx-16 rounded-2xl py-10 my-10">
           <div className="flex flex-col items-center md:items-start justify-center text-center md:text-left space-y-4 ">

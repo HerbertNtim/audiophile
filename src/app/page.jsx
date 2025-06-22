@@ -47,7 +47,7 @@ export default function Home() {
       </div>
 
       {/* CATEGORIES */}
-      <div className="bg-gray-200 pt-45 pb-10 flex flex-col items-center">
+      <div className="bg-gray-200 pt-25 pb-10 flex flex-col items-center">
         <Category />
         <SpeakerCard />
         <SpeakerOnTable />
