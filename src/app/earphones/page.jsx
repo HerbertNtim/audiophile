@@ -15,6 +15,8 @@ const Earphones = () => {
     dispatch(addToCart({
       id: earphone.id,
       name: earphone.name,
+      image: earphone.image,
+      price: earphone.price,
     }))
   }
 

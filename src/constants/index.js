@@ -126,25 +126,25 @@ export const speakers = [
 
 export const earphones = [
   {
-    id: '1',
+    id: 1,
     name: 'Apple AirPods Pro',
     price: 249.99,
     image: '/images/earphones/image-category-page-preview.jpg',
   },
   {
-    id: '2',
+    id: 2,
     name: 'Sony WF-1000XM4',
     price: 279.99,
     image: '/images/earphones/image-gallery-1.jpg',
   },
   {
-    id: '3',
+    id: 3,
     name: 'Bose QuietComfort Earbuds',
     price: 279.99,
     image: '/images/earphones/image-gallery-2.jpg',
   },
   {
-    id: '4',
+    id: 4,
     name: 'Jabra Elite 75t',
     price: 199.99,
     image: '/images/earphones/image-gallery-3.jpg',
