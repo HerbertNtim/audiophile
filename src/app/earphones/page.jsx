@@ -1,8 +1,23 @@
-import { earphones } from "@/constants";
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+
+import { earphones } from "@/constants";
+import { addToCart } from "@/store/cart";
+import { useDispatch, useSelector } from "react-redux";
 
 const Earphones = () => {
+  const cart = useSelector((state) => state.cart.items);
+  console.log("Cart items:", cart);
+  const dispatch = useDispatch();
+  const handleAddToCart = (earphone) => {
+    dispatch(addToCart({
+      id: earphone.id,
+      name: earphone.name,
+    }))
+  }
+
   return (
     <div className="w-full h-full">
       <div className="relative min-h-[250px] md:min-h-[350px] lg:h-[450px] w-full overflow-hidden">
@@ -12,7 +27,6 @@ const Earphones = () => {
           alt="hero image"
           fill
           className="object-cover z-0"
-          priority
         />
 
         {/* Overlay */}
@@ -54,7 +68,7 @@ const Earphones = () => {
             >
               <Image
                 src={earphone.image}
-                alt={`Headphone ${earphone.id}`}
+                alt={`earphone ${earphone.id}`}
                 width={300}
                 height={300}
                 className="w-full h-auto rounded-lg mb-4"
@@ -64,13 +78,14 @@ const Earphones = () => {
               </h3>
               <div className="flex items-center justify-between mt-2">
                 <p className="text-gray-500 text-xl">${earphone.price}</p>
-                <button className="bg-orange-500 px-2 py-1 rounded hover:bg-orange-700 transition cursor-pointer">
+                <button className="bg-orange-500 px-2 py-1 rounded hover:bg-orange-700 transition cursor-pointer" onClick={() => handleAddToCart(earphone)}>
                   <Image
                     src={"/icons/icon-cart.svg"}
                     alt="cart"
                     width={25}
                     height={25}
-                    className="object-cover"
+                    className="object-contain"
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </button>
               </div>
