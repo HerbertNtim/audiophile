@@ -1,5 +1,6 @@
 import Category from "@/components/Category";
 import SpeakerCard from "@/components/SpeakerCard";
+import SpeakerOnTable from "@/components/SpeakerOnTable";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -46,6 +47,7 @@ export default function Home() {
       <div className="bg-gray-200 pt-45 pb-25 flex flex-col items-center">
         <Category />
         <SpeakerCard />
+        <SpeakerOnTable />
       </div>
     </div>
   );

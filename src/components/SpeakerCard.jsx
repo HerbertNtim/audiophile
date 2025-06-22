@@ -11,29 +11,29 @@ const SpeakerCard = () => {
 
       <div className="relative w-full h-full flex flex-col sm:flex-row items-center justify-between px-8 py-3">
         {/* Speaker Image - Position remains unchanged */}
-        <div className="absolute bottom-0 left-0 sm:translate-y-40 translate-y-20 z-10">
+        <div className="absolute bottom-0 left-0 sm:translate-y-40 translate-y-25 z-10">
           <Image
             src="/images/image-category-thumbnail-speakers.png"
             alt="speaker"
             width={500}
             height={500}
-            className="object-contain w-[80vw] sm:w-[300px] md:w-[400px] lg:w-[500px]"
+            className="object-contain w-[70vw] sm:w-[300px] md:w-[400px] lg:w-[500px]"
           />
         </div>
 
         {/* Text Content - Made responsive */}
-        <div className="absolute flex-1 sm:top-1/2 top-[35%] right-4 sm:right-8 md:right-12 lg:right-16 transform -translate-y-1/2 z-20 text-white max-w-xl">
+        <div className="absolute flex-1 sm:top-[40%] top-[35%] right-4 sm:right-16 transform -translate-y-1/2 z-20 text-white max-w-xl">
           <div className="text-center sm:text-left">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase leading-tight tracking-wider mb-4">
-              ZX9 <br className="hidden sm:block"/> Speaker
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase leading-tight tracking-wider mb-1">
+              ZX9 <br className="hidden lg:block"/> Speaker
             </h2>
-            <p className="text-white/80 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
+            <p className="text-white/80 text-sm lg:text-base leading-relaxed mb-2 lg:mb-8">
               Upgrade to premium speakers that are <br /> phenomenally built to deliver
               truly remarkable <br /> sound.
             </p>
             <Link
               href="/speaker"
-              className="inline-block px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition text-sm sm:text-base font-medium uppercase tracking-wider border border-transparent hover:border-gray-600"
+              className="px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition text-sm lg:text-base font-medium uppercase tracking-wider border border-transparent hover:border-gray-600"
             >
               See Product
             </Link>
