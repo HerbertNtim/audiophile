@@ -21,7 +21,7 @@ const categories = [
 
 const Category = () => {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center gap-24 sm:gap-8 px-4">
+    <div className="flex flex-col lg:flex-row items-center justify-center gap-24 lg:gap-8 px-4 pt-20">
       {categories.map((category, index) => (
         <CategoryCard key={index} imageUrl={category.imageUrl} heading={category.heading} href={category.href}/>
       ))}

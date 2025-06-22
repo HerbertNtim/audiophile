@@ -5,7 +5,7 @@ import React from "react";
 const EarphoneCard = () => {
   return (
     <div className="min-h-[200px] md:min-h-[400px] lg:min-h-[450px] w-full rounded-2xl overflow-hidden">
-      <div className="flex flex-col md:flex-row w-full h-full gap-0 ">
+      <div className="flex flex-col lg:flex-row w-full h-full lg:gap-0 gap-44">
         {/* EARPHONE IMAGE */}
         <div className="w-[98%] h-48 px-16">
           <Image
@@ -18,7 +18,7 @@ const EarphoneCard = () => {
         </div>
         
         {/* TEXT CONTENT */}
-        <div className="w-[80%] h-48 sm:w-[90%] sm:h-68 bg-gray-300 flex items-center justify-center mx-6 sm:mx-16 rounded-2xl">
+        <div className="w-[80%] h-48 sm:w-[90%] sm:h-68 bg-gray-300 flex items-center justify-center mx-8 sm:mx-16 rounded-2xl">
           <div className="flex flex-col items-center md:items-start justify-center text-center md:text-left space-y-4 ">
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-black/75 uppercase tracking-wider">
               YX1 EARPHONES
