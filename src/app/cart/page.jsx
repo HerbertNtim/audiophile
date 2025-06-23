@@ -3,10 +3,18 @@
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { decreaseQuantity, deleteFromCart, increaseQuantity } from "@/store/cart";
+import {
+  decreaseQuantity,
+  deleteFromCart,
+  increaseQuantity,
+} from "@/store/cart";
 
 const CartPage = () => {
   const carts = useSelector((state) => state.cart.items);
+   const subtotal = carts.reduce((acc, item) => {
+    return acc + item.price * item.quantity;
+  }, 0);
+
   const dispatch = useDispatch();
 
   const handleDeleteFromCart = (id) => {
@@ -15,14 +23,14 @@ const CartPage = () => {
 
   const handleDecreaseQuantity = (id) => {
     dispatch(decreaseQuantity(id));
-  }
+  };
 
   const handleIncreaseQuantity = (id) => {
     dispatch(increaseQuantity(id));
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-200">
+    <div className="min-h-screen w-full bg-gray-200 overflow-y-auto">
       <div className="pt-32 pb-5 flex flex-col items-center">
         <h2 className="font-semibold text-center text-2xl text-gray-500 tracking-wide">
           Shopping Cart
@@ -54,7 +62,7 @@ const CartPage = () => {
                         className="w-12 h-12 rounded mr-4"
                       />
                       <div className="flex flex-col items-center">
-                        <span className="text-gray-700 text-sm">
+                        <span className="text-gray-700 text-xs sm:text-sm">
                           {cart.name}
                         </span>
                         <button
@@ -92,32 +100,19 @@ const CartPage = () => {
             </table>
           </div>
         )}
-      </div>
-      {/* <div className="pt-25 pb-10 flex flex-col items-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6 md:px-16">
-          {carts.map((cart) => (
-            <div key={cart.id} className="bg-gray-300 p-4 rounded-lg shadow-md">
-              <Image
-                src={cart.image}
-                alt={`cart ${cart.id}`}
-                width={300}
-                height={300}
-                className="w-full h-auto rounded-lg mb-4"
-              />
-              <h3 className="text-lg font-semibold text-black">{cart.name}</h3>
-              <div className="flex items-center justify-between mt-2">
-                <p className="text-gray-500 text-xl">${cart.price}</p>
-                <button
-                  className="bg-orange-500 px-2 py-1 rounded hover:bg-orange-700 transition cursor-pointer"
-                  onClick={() => {handleDeleteFromCart(cart.id)}}
-                >
-                 <Trash2 size={28} />
-                </button>
-              </div>
+
+        <div className="flex justify-between mt-8 w-[90%] mx-auto">
+          <div></div>
+          <div className="flex flex-col items-center justify-end">
+            <div className="flex justify-between gap-5 text-xl">
+              <span className="p-2">Subtotal</span>
+              <span className="p-2 bg-amber-500 rounded text-lg text-gray-700">${subtotal}</span>
             </div>
-          ))}
+            <p className="text-sm mt-2 text-gray-600">Taxes and shipping calculated at checkout</p>
+            <button>Check out</button>
+          </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
