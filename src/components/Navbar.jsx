@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { name: "Headphones", href: "/headphones" },
@@ -16,6 +17,9 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [cartItems, setCartItems] = useState(0);
   const carts = useSelector((state) => state.cart.items);
+
+  const pathname = usePathname();
+
   useEffect(() => {
     // Update cart items count whenever the cart changes
     setCartItems(carts.length);
@@ -40,7 +44,7 @@ export default function Navbar() {
             >
               <Link
                 href={link.href}
-                className="uppercase tracking-wider hover:text-gray-300 transition duration-200"
+                className={`"uppercase tracking-wider hover:text-gray-300 transition duration-200 ${pathname === link.href && 'underline underline-offset-8'}`}
               >
                 {link.name}
               </Link>
