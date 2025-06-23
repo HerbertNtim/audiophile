@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [], 
-}
+  items: [],
+};
 
 const cartSlice = createSlice({
   name: "cart",
@@ -13,7 +13,7 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const { id, name, image, price } = action.payload;
       // Check if the item already exists in the cart
-      const existingItem = state.items.find(item => item.id === id);
+      const existingItem = state.items.find((item) => item.id === id);
       if (existingItem) {
         return;
       } else {
@@ -26,8 +26,13 @@ const cartSlice = createSlice({
         });
       }
     },
+
+    deleteFromCart: (state, action) => {
+      const id = action.payload;
+        state.items = state.items.filter(item => item.id !== id)
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, deleteFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

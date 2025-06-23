@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { earphones } from "@/constants";
 import { addToCart } from "@/store/cart";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Earphones = () => {
   const dispatch = useDispatch();

@@ -1,3 +1,5 @@
+'use client';
+
 import { headphones } from "@/constants";
 import { addToCart } from "@/store/cart";
 import Image from "next/image";
