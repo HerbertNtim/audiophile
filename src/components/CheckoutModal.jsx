@@ -1,106 +1,71 @@
+"use client";
+
+import { setFormData } from "@/store/checkoutSlice";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const CheckoutModal = ({ onClose }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    city: "",
-    paymentMethod: "",
-  });
-
-  const [errors, setErrors] = useState({});
+  const initialFormData = useSelector((state) => state.checkout);
+  const dispatch = useDispatch();
+  const [formData, setLocalFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setLocalFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required.";
-    if (!formData.email.trim()) newErrors.email = "Email is required.";
-    else if (!/\S+@\S+\.\S+/.test(formData.email))
-      newErrors.email = "Enter a valid email.";
-    if (!formData.phone.trim()) newErrors.phone = "Phone number is required.";
-    if (!formData.city.trim()) newErrors.city = "City is required.";
-    if (!formData.paymentMethod) newErrors.paymentMethod = "Select a payment method.";
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  useEffect(() => {
+    setLocalFormData(initialFormData);
+  }, [initialFormData]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log("Submitted!", formData);
-      onClose(); // Close modal after success
-    }
+    dispatch(setFormData(formData));
+    console.log("Form submitted:", formData);
+    onClose(); // Close modal after submit
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 opacity-90">
-      <div className="bg-white rounded-lg shadow-lg p-6 w-[90%] sm:w-[500px] relative sm:mt-10">
-        <button className="absolute top-4 right-4 text-gray-500 hover:text-gray-800" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+      <div className="bg-white rounded-lg shadow-lg p-6 w-[90%] sm:w-[500px] relative">
+        {/* Close Button */}
+        <button
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
+          onClick={onClose}
+        >
           <X />
         </button>
+
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Checkout</h2>
+
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Name</label>
-            <input
-              type="text"
-              name="name"
-              className="w-full p-2 border rounded"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
-          </div>
-
-          {/* Email */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              name="email"
-              className="w-full p-2 border rounded"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-          </div>
-
-          {/* Phone */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Phone Number</label>
-            <input
-              type="tel"
-              name="phone"
-              className="w-full p-2 border rounded"
-              value={formData.phone}
-              onChange={handleChange}
-            />
-            {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
-          </div>
-
-          {/* City */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">City</label>
-            <input
-              type="text"
-              name="city"
-              className="w-full p-2 border rounded"
-              value={formData.city}
-              onChange={handleChange}
-            />
-            {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
-          </div>
+          {["name", "city", "email", "phone"].map((field) => (
+            <div key={field}>
+              <label className="block text-sm font-medium capitalize">
+                {field}
+              </label>
+              <input
+                required
+                type={
+                  field === "email"
+                    ? "email"
+                    : field === "phone"
+                    ? "tel"
+                    : "text"
+                }
+                name={field}
+                className="w-full p-2 border rounded"
+                value={formData[field]}
+                onChange={handleChange}
+              />
+            </div>
+          ))}
 
           {/* Payment Method */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Payment Method</label>
+            <label className="block text-sm font-medium">Payment Method</label>
             <select
+              required
               name="paymentMethod"
               className="w-full p-2 border rounded"
               value={formData.paymentMethod}
@@ -111,7 +76,6 @@ const CheckoutModal = ({ onClose }) => {
               <option value="paypal">PayPal</option>
               <option value="cash">Cash on Delivery</option>
             </select>
-            {errors.paymentMethod && <p className="text-red-500 text-sm">{errors.paymentMethod}</p>}
           </div>
 
           {/* Buttons */}

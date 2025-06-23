@@ -2,6 +2,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "./cart";
+import checkoutReducer from "./checkoutSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import { combineReducers } from "redux";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
@@ -29,11 +30,12 @@ const storage = typeof window !== "undefined"
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cart"], // only persist cart state
+  whitelist: ["cart", "checkout"], 
 };
 
 const rootReducer = combineReducers({
   cart: cartReducer,
+  checkout: checkoutReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
