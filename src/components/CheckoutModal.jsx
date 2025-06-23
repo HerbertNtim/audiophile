@@ -5,12 +5,13 @@ import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OrderSummaryModal from "./OrderSummary";
+import { toast } from "react-toastify";
 
 const CheckoutModal = ({ onClose }) => {
   const initialFormData = useSelector((state) => state.checkout);
   const dispatch = useDispatch();
   const [formData, setLocalFormData] = useState(initialFormData);
-  const [showOrderSummary, setShowOrderSummary] = useState(true);
+  const [showOrderSummary, setShowOrderSummary] = useState(false);
 
   const handleChange = (e) => {
     setLocalFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,8 +24,9 @@ const CheckoutModal = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(setFormData(formData));
-    console.log("Form submitted:", formData);
     setShowOrderSummary(true);
+    toast.success("Checkout successful!");
+    console.log("Form Data Submitted:", formData);
   };
 
   return (
@@ -104,9 +106,7 @@ const CheckoutModal = ({ onClose }) => {
       )}
 
       {showOrderSummary && (
-        <OrderSummaryModal
-          onClose={() => setShowOrderSummary(!OrderSummaryModal)}
-        />
+        <OrderSummaryModal onClose={() => setShowOrderSummary(false)} />
       )}
     </div>
   );

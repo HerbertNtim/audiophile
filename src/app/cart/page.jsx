@@ -10,6 +10,7 @@ import {
 } from "@/store/cart";
 import { useState } from "react";
 import CheckoutModal from "@/components/CheckoutModal";
+import { toast } from "react-toastify";
 
 const CartPage = () => {
   const carts = useSelector((state) => state.cart.items);
@@ -21,14 +22,17 @@ const CartPage = () => {
 
   const handleDeleteFromCart = (id) => {
     dispatch(deleteFromCart(id));
+    toast.success("Item removed from cart")
   };
 
   const handleDecreaseQuantity = (id) => {
     dispatch(decreaseQuantity(id));
+        toast.success("Item quantity decreased")
   };
 
   const handleIncreaseQuantity = (id) => {
     dispatch(increaseQuantity(id));
+    toast.success("Item quantity increased")
   };
 
   const [showCheckout, setShowCheckout] = useState(false);
@@ -109,7 +113,7 @@ const CartPage = () => {
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex justify-between gap-5 text-xl">
               <span className="p-1">Subtotal</span>
-              <span className="p-1 bg-amber-500 rounded text-[18px] text-gray-700">${subtotal}</span>
+              <span className="p-1 bg-amber-500 rounded text-[18px] text-gray-700">${subtotal.toFixed(2)}</span>
             </div>
             <p className="text-lg mt-2 text-gray-600">Taxes and shipping calculated at checkout</p>
             <button className="sm:mt-8 bg-orange-500 text-white sm:px-8 sm:py-2 px-6 py-3 rounded hover:bg-orange-700 transition cursor-pointer uppercase font-semibold tracking-wider" onClick={() => setShowCheckout(true)}>Check out</button>

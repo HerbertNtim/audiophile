@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const Speakers = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Speakers = () => {
         quantity: 1,
       })
     );
+    toast.success(`${speaker.name} added to cart!`);
   };
 
   return (

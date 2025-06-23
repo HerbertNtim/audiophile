@@ -6,6 +6,7 @@ import Image from "next/image";
 import { earphones } from "@/constants";
 import { addToCart } from "@/store/cart";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const Earphones = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Earphones = () => {
       price: earphone.price,
       quantity: 1
     }))
+    toast.success(`${earphone.name} added to cart!`)
   }
 
   return (
