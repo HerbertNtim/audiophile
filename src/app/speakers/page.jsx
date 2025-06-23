@@ -1,4 +1,5 @@
-import SpeakerCard from "@/components/SpeakerCard";
+'use client';
+
 import { speakers } from "@/constants";
 import { addToCart } from "@/store/cart";
 import Image from "next/image";
@@ -14,7 +15,10 @@ const Speakers = () => {
       name: speaker.name,
       image: speaker.image,
       price: speaker.price,
+      quantity: 1
     }))
+
+    console.log(`Speaker with id ${speaker.id} added to cart`);
   }
 
   return (

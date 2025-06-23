@@ -15,6 +15,7 @@ const Headphones = () => {
       name: headphone.name,
       image: headphone.image,
       price: headphone.price,
+      quantity: 1
     }))
   }
 
