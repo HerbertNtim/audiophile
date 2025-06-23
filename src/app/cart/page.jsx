@@ -3,7 +3,7 @@
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromCart } from "@/store/cart";
+import { decreaseQuantity, deleteFromCart, increaseQuantity } from "@/store/cart";
 
 const CartPage = () => {
   const carts = useSelector((state) => state.cart.items);
@@ -11,7 +11,14 @@ const CartPage = () => {
 
   const handleDeleteFromCart = (id) => {
     dispatch(deleteFromCart(id));
-    console.log(`Item with id ${id} deleted from cart`);
+  };
+
+  const handleDecreaseQuantity = (id) => {
+    dispatch(decreaseQuantity(id));
+  }
+
+  const handleIncreaseQuantity = (id) => {
+    dispatch(increaseQuantity(id));
   };
 
   return (
@@ -62,15 +69,15 @@ const CartPage = () => {
                     <td className="py-4 px-6 text-gray-700">
                       <div className="flex items-center gap-2">
                         <button
-                          className="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300"
-                          onClick={() => handleDecreaseCart(cartItem)}
+                          className="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300 cursor-pointer"
+                          onClick={() => handleDecreaseQuantity(cart.id)}
                         >
-                          −
+                          -
                         </button>
                         <div className="px-3">{cart.quantity}</div>
                         <button
-                          className="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300"
-                          onClick={() => handleAddToCart(cartItem)}
+                          className="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300 cursor-pointer"
+                          onClick={() => handleIncreaseQuantity(cart.id)}
                         >
                           +
                         </button>
