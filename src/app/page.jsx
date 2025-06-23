@@ -29,7 +29,7 @@ export default function Home() {
             <h4 className="text-sm md:text-lg font-light text-gray-500 tracking-[0.9em] mb-4">
               NEW PRODUCT
             </h4>
-            <h1 className="text-4xl sm:text-7xl md:text-6xl 2xl:text-9xl font-bold uppercase leading-tight">
+            <h1 className="text-gray-200 text-4xl sm:text-7xl md:text-6xl 2xl:text-9xl font-bold uppercase leading-tight">
               XX99 Mark II <br /> Headphones
             </h1>
             <p className="text-sm sm:text-lg  text-gray-400 my-4 sm:my-8 mb-12">
