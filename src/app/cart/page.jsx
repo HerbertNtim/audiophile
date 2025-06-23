@@ -1,6 +1,6 @@
 "use client";
 
-import { Trash2 } from "lucide-react";
+import { Check, Minus, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,6 +8,8 @@ import {
   deleteFromCart,
   increaseQuantity,
 } from "@/store/cart";
+import { useState } from "react";
+import CheckoutModal from "@/components/CheckoutModal";
 
 const CartPage = () => {
   const carts = useSelector((state) => state.cart.items);
@@ -28,6 +30,8 @@ const CartPage = () => {
   const handleIncreaseQuantity = (id) => {
     dispatch(increaseQuantity(id));
   };
+
+  const [showCheckout, setShowCheckout] = useState(false);
 
   return (
     <div className="min-h-screen w-full bg-gray-200 overflow-y-auto">
@@ -73,21 +77,21 @@ const CartPage = () => {
                         </button>
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-gray-700">${cart.price}</td>
+                    <td className="py-4 px-6 text-gray-700">${cart.price.toFixed(2)}</td>
                     <td className="py-4 px-6 text-gray-700">
                       <div className="flex items-center gap-2">
                         <button
                           className="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300 cursor-pointer"
                           onClick={() => handleDecreaseQuantity(cart.id)}
                         >
-                          -
+                          <Minus size={14} />
                         </button>
                         <div className="px-3">{cart.quantity}</div>
                         <button
                           className="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300 cursor-pointer"
                           onClick={() => handleIncreaseQuantity(cart.id)}
                         >
-                          +
+                          <Plus size={14} />
                         </button>
                       </div>
                     </td>
@@ -101,17 +105,18 @@ const CartPage = () => {
           </div>
         )}
 
-        <div className="flex justify-between mt-8 w-[90%] mx-auto">
-          <div></div>
-          <div className="flex flex-col items-center justify-end">
+        <div className="mt-8 w-[90%] mx-auto">
+          <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex justify-between gap-5 text-xl">
-              <span className="p-2">Subtotal</span>
-              <span className="p-2 bg-amber-500 rounded text-lg text-gray-700">${subtotal}</span>
+              <span className="p-1">Subtotal</span>
+              <span className="p-1 bg-amber-500 rounded text-[18px] text-gray-700">${subtotal}</span>
             </div>
-            <p className="text-sm mt-2 text-gray-600">Taxes and shipping calculated at checkout</p>
-            <button>Check out</button>
+            <p className="text-lg mt-2 text-gray-600">Taxes and shipping calculated at checkout</p>
+            <button className="sm:mt-8 bg-orange-500 text-white sm:px-8 sm:py-2 px-6 py-3 rounded hover:bg-orange-700 transition cursor-pointer uppercase font-semibold tracking-wider" onClick={() => setShowCheckout(true)}>Check out</button>
           </div>
         </div>
+
+        {showCheckout &&  <CheckoutModal onClose={() => setShowCheckout(false)} />}
       </div>
     </div>
   );

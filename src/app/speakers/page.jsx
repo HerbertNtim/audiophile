@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { speakers } from "@/constants";
 import { addToCart } from "@/store/cart";
@@ -10,16 +10,16 @@ import { useDispatch } from "react-redux";
 const Speakers = () => {
   const dispatch = useDispatch();
   const handleAddToCart = (speaker) => {
-    dispatch(addToCart({
-      id: speaker.id,
-      name: speaker.name,
-      image: speaker.image,
-      price: speaker.price,
-      quantity: 1
-    }))
-
-    console.log(`Speaker with id ${speaker.id} added to cart`);
-  }
+    dispatch(
+      addToCart({
+        id: speaker.id,
+        name: speaker.name,
+        image: speaker.image,
+        price: speaker.price,
+        quantity: 1,
+      })
+    );
+  };
 
   return (
     <div>
@@ -86,7 +86,10 @@ const Speakers = () => {
               </h3>
               <div className="flex items-center justify-between mt-2">
                 <p className="text-gray-500 text-xl">${speaker.price}</p>
-                <button className="bg-orange-500 px-2 py-1 rounded hover:bg-orange-700 transition cursor-pointer" onClick={() => handleAddToCart(speaker)}>
+                <button
+                  className="bg-orange-500 px-2 py-1 rounded hover:bg-orange-700 transition cursor-pointer"
+                  onClick={() => handleAddToCart(speaker)}
+                >
                   <Image
                     src={"/icons/icon-cart.svg"}
                     alt="cart"
