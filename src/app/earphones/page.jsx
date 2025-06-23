@@ -41,7 +41,7 @@ const Earphones = () => {
             <h4 className="text-sm md:text-lg font-light text-gray-500 tracking-[0.9em] mb-2">
               EARPHONES
             </h4>
-            <h1 className="text-4xl sm:text-7xl md:text-6xl 2xl:text-9xl font-bold uppercase leading-tight">
+            <h1 className="text-gray-200 text-4xl sm:text-7xl md:text-6xl 2xl:text-9xl font-bold uppercase leading-tight">
               quality <br /> earphones
             </h1>
             <p className="text-sm sm:text-lg  text-gray-400 my-1 sm:my-6 mb-12">

@@ -81,43 +81,43 @@ export const headphones = [
 
 export const speakers = [
   {
-    id: 1,
+    id: 101,
     name: 'Sonos One',
     price: 199.99,
     image: '/images/speakers/image-gallery-1 copy.jpg',
   },
   {
-    id: 2,
+    id: 102,
     name: 'Bose SoundLink Revolve+',
     price: 299.99,
     image: '/images/speakers/image-gallery-1.jpg',
   },
   {
-    id: 3,
+    id: 103,
     name: 'JBL Charge 4',
     price: 179.99,
     image: '/images/speakers/image-gallery-2 copy.jpg',
   },
   {
-    id: 4,
+    id: 104,
     name: 'Ultimate Ears Boom 3',
     price: 149.99,
     image: '/images/speakers/image-gallery-2.jpg',
   },
   {
-    id: 5,
+    id: 105,
     name: 'Sony SRS-XB43',
     price: 249.99,
     image: '/images/speakers/image-gallery-3.jpg',
   },
   {
-    id: 6,
+    id: 106,
     name: 'Bang & Olufsen Beosound A1',
     price: 199.99,
     image: '/images/speakers/image-product copy.jpg',
   },
   {
-    id: 7,
+    id: 107,
     name: 'Anker Soundcore Motion+',
     price: 99.99,
     image: '/images/speakers/image-product.jpg',
@@ -126,25 +126,25 @@ export const speakers = [
 
 export const earphones = [
   {
-    id: 1,
+    id: 201,
     name: 'Apple AirPods Pro',
     price: 249.99,
     image: '/images/earphones/image-category-page-preview.jpg',
   },
   {
-    id: 2,
-    name: 'Sony WF-1000XM4',
-    price: 279.99,
-    image: '/images/earphones/image-gallery-1.jpg',
-  },
-  {
-    id: 3,
+    id: 202,
     name: 'Bose QuietComfort Earbuds',
     price: 279.99,
     image: '/images/earphones/image-gallery-2.jpg',
   },
   {
-    id: 4,
+    id: 203,
+    name: 'Sony WF-1000XM4',
+    price: 279.99,
+    image: '/images/earphones/image-gallery-1.jpg',
+  },
+  {
+    id: 204,
     name: 'Jabra Elite 75t',
     price: 199.99,
     image: '/images/earphones/image-gallery-3.jpg',
