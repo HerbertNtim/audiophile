@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Minus, Plus, Trash2 } from "lucide-react";
+import {  Minus, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import {
